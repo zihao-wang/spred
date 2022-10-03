@@ -1,15 +1,15 @@
 # Sparsity by Redundancy
 
-This repository implements several deep learning models with redundancy for image classification.
+This repository implements the spred (sparsity by redundancy) method for several deep learning models for image classification.
 
-The models contains
+The models.py contains the implementation following models
 - MLP `models/mlp.py`
 - VGG `models/vgg.py`
 - ResNet `models/resnet.py`
 
-The models can be trained on CIFAR10 and CIFAR100 datasets
+This code can be ran on the CIFAR10 and CIFAR100 datasets
 
-## A typical workaround,
+## Running the code
 
 Script `run.sh` illustrates a typical workaround for obtaining sparse ResNet18.
 
@@ -20,7 +20,7 @@ python pretrain.py --dataset=$dataset \
                    --device=$device \
                    --output_path=$pretrain_output_path
 ```
-2. pruning the neural network with certain threshold and then finetune the sparse network several epoches
+2. Prune the neural network with a certain threshold and finetune the sparse network
 ```
 python3 finetune.py --lr=1e-4 \
                     --threshold=$thr \
@@ -30,25 +30,23 @@ python3 finetune.py --lr=1e-4 \
                     --output_path finetune/${dataset}_pretrain_wd_${pretrain_wd}/thr_${thr}
 ```
 
-### Train the models on CIFAR10
+### Examplary Results on CIFAR-10
 ![cifar10](cifar10.png)
 
-CIFAR10 results are derived by running
+CIFAR10 results are obtained by running
 ```
 run.sh cifar10 ${kappa} cuda:0
 ```
-where ${kappa} is instantiated to specific parameters.
 
-### Train the models on CIFAR100
+### Train the models on CIFAR-100
 ![cifar100](cifar100.png)
 
-CIFAR100 results are derived by running
+CIFAR-100 results are obtained by running
 ```
 run.sh cifar100 ${kappa} cuda:0
 ```
-where ${kappa} is instantiated to specific parameters.
 
-Plotes
+
 
 ## Prerequisites
 - Python 3.6+
