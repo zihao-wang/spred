@@ -31,15 +31,16 @@ python3 finetune.py --lr=1e-4 \
 ```
 
 ### Examplary Results on CIFAR-10
-![cifar10](cifar10.png)
+
+<img src="cifar10.png" alt="cifar10" width="400"/>
 
 CIFAR10 results are obtained by running
 ```
 run.sh cifar10 ${kappa} cuda:0
 ```
 
-### Train the models on CIFAR-100
-![cifar100](cifar100.png)
+### Examplary Results on CIFAR-109
+<img src="cifar100.png" alt="cifar100" width="400"/>
 
 CIFAR-100 results are obtained by running
 ```
