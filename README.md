@@ -9,7 +9,11 @@ The models.py contains the implementation following models
 
 This code can be ran on the CIFAR10 and CIFAR100 datasets
 
-## Running the code
+## Demonstration on a Lasso / Compressive Sensing Task
+See the jupyter notebook in the demonstration folder. We note that this implementation is minimal. For more advanced implementations, see the files in models/.
+
+
+## Running the code for CIFAR
 
 Script `run.sh` illustrates a typical workaround for obtaining sparse ResNet18.
 
