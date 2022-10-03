@@ -1,6 +1,6 @@
 # Sparsity by Redundancy
 
-This repository implements the spred (sparsity by redundancy) method for several deep learning models for image classification.
+Spred is a method that allows one to optimize L1 penalties using any gradient-descent-based methods in standard deep learning frameworks. This repository implements the spred (sparsity by redundancy) method for several deep learning models for image classification in PyTorch. 
 
 The models.py contains the implementation following models
 - MLP `models/mlp.py`
