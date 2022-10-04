@@ -11,7 +11,7 @@ import torchvision.transforms as transforms
 import os
 import argparse
 
-from models import *
+from models.resnet import ResNet18
 from utils import progress_bar
 
 
@@ -85,7 +85,7 @@ thresh = args.threshold
 if args.resume_path:
     # Load checkpoint.
     print('==> Resuming from checkpoint..')
-    checkpoint = torch.load(os.path.join(args.resume_path, 'best.pt'),
+    checkpoint = torch.load(os.path.join(args.resume_path, 'last.pt'),
                             map_location=device)
     net_state_dict = checkpoint['net']
     net.load_state_dict(net_state_dict)
