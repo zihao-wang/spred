@@ -1,0 +1,36 @@
+# config to get 90.23% sparse ResNet50 on ImageNet. Modify this file to get other sparse models.
+# Architecture
+arch: ResNet50
+
+# ===== Dataset ===== #
+data: /home/ziyin/sparsity/imgnet/
+set: ImageNet
+name: spred_base
+
+# ===== Learning Rate Policy ======== #
+optimizer: sgd
+lr: 0.00256
+lr_policy: multistep_lr
+lr_gamma: 0.1
+lr_adjust: 15
+warmup_length: 0
+
+#0.256
+# ===== Network training config ===== #
+epochs: 50
+#weight_decay: 0.00002251757813 # Change this according to reported numbers in appendix
+momentum: 0.875
+batch_size: 256
+label_smoothing: 0.1
+
+# ===== Sparsity =========== #
+conv_type: SpredConv
+bn_type: LearnedBatchNorm
+init: kaiming_normal
+mode: fan_in
+nonlinearity: relu
+sparse_function: sigmoid
+sInit_value: -3200 # Change this according to reported numbers in appendix
+
+# ===== Hardware setup ===== #
+workers: 20

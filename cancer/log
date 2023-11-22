@@ -1,0 +1,24 @@
+2022-09-15 16:42:18.048 INFO cancer_sparse_classification - <module>: Namespace(B=20, alpha=0.001, batch_size=1024, dataset_name='', device='cuda:0', epochs=5000, log_dir='log', lr=1e-05, model_name='logistic_regression', num_feat=50, num_trials=20, optname='Adam')
+2022-09-15 16:42:18.049 INFO GEOparse - get_GEO: Parsing data/GDS1815_full.soft.gz: 
+2022-09-15 16:42:18.049 DEBUG GEOparse - parse_GDS: DATABASE: Geo
+2022-09-15 16:42:18.050 DEBUG GEOparse - parse_GDS: DATASET: GDS1815
+2022-09-15 16:42:18.050 DEBUG GEOparse - parse_GDS: SUBSET: GDS1815_1
+2022-09-15 16:42:18.050 DEBUG GEOparse - parse_GDS: SUBSET: GDS1815_2
+2022-09-15 16:42:18.050 DEBUG GEOparse - parse_GDS: SUBSET: GDS1815_3
+2022-09-15 16:42:18.050 DEBUG GEOparse - parse_GDS: SUBSET: GDS1815_4
+2022-09-15 16:42:18.050 DEBUG GEOparse - parse_GDS: SUBSET: GDS1815_5
+2022-09-15 16:42:18.051 DEBUG GEOparse - parse_GDS: SUBSET: GDS1815_6
+2022-09-15 16:42:18.051 DEBUG GEOparse - parse_GDS: SUBSET: GDS1815_7
+2022-09-15 16:42:18.051 DEBUG GEOparse - parse_GDS: SUBSET: GDS1815_8
+2022-09-15 16:42:18.051 DEBUG GEOparse - parse_GDS: SUBSET: GDS1815_9
+2022-09-15 16:42:18.051 DEBUG GEOparse - parse_GDS: SUBSET: GDS1815_10
+2022-09-15 16:42:18.051 DEBUG GEOparse - parse_GDS: SUBSET: GDS1815_11
+2022-09-15 16:42:18.051 DEBUG GEOparse - parse_GDS: SUBSET: GDS1815_12
+2022-09-15 16:42:18.052 DEBUG GEOparse - parse_GDS: SUBSET: GDS1815_13
+2022-09-15 16:42:18.052 DEBUG GEOparse - parse_GDS: SUBSET: GDS1815_14
+2022-09-15 16:42:18.052 DEBUG GEOparse - parse_GDS: SUBSET: GDS1815_15
+2022-09-15 16:42:18.052 DEBUG GEOparse - parse_GDS: ANNOTATION: 
+2022-09-15 16:42:18.052 ERROR GEOparse - parse_GDS: Cannot recognize type Annotation
+2022-09-15 16:42:18.052 DEBUG GEOparse - parse_GDS: DATASET: GDS1815
+2022-09-15 16:42:19.294 INFO data - get_cancer_GDS: GDS dataset data/GDS1815_full.soft.gz loaded
+2022-09-15 16:42:19.295 INFO data - get_cancer_GDS: #features 22283, #labels 15, #samples 400
