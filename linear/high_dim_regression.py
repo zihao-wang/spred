@@ -100,11 +100,12 @@ if __name__ == "__main__":
         target_loss = lasso_record['total'][0]
         target_zero_rate = lasso_record['zero_rate12'][0]
         rs_fetch = run_rs_regression(a, x, y,
-                                     args.optname,
-                                     args.epoch,
-                                     args.batch_size,
-                                     args.lr,
-                                     args.device,
+                                     optname=args.optname,
+                                     epochs=args.epoch,
+                                     batch_size=args.batch_size,
+                                     lr=args.lr,
+                                     device=args.device,
+                                     loss_func='mse',
                                      loss_less_than=target_loss,
                                      zero_rate_greater_than=target_zero_rate,
                                      zero_rate_ratios=[0.5, 0.75, 0.9, 0.99, 0.999, 1],
