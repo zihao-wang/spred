@@ -1,21 +1,19 @@
 import argparse
-import os
 import logging
-from secrets import choice
+import os
 import time
 
-import torch
 import numpy as np
+import torch
+from data import get_cancer_GDS
+from models import (MLP, SparseFeatureLinearRegression, SparseFeatureNet,
+                    SparseFeatureNetv2)
+from pyHSICLasso import HSICLasso
+from routines import run_classification, run_sparse_feature_classification
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import KFold, train_test_split
 from sklearn.svm import SVC
-from pyHSICLasso import HSICLasso
-
-from data import get_cancer_GDS
-from models import MLP, SparseFeatureLinearRegression, SparseFeatureNet, SparseFeatureNetv2, SparseWeightNet
-from routines import run_classification, run_sparse_feature_classification
-
 
 parser = argparse.ArgumentParser()
 
