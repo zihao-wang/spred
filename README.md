@@ -25,9 +25,9 @@ The second task is non-linear classification in high-dimensional dataset, where 
 
 The third task is to leverage the training protocal of STR. The original repository can be found in [this link](https://github.com/RAIVNLab/STR). We modify the model implementation.
 
-Please check scripts with `run_{STR/spred/L1}_{cifar10/cifar100}.sh` for the usage on CIFAR datasets.
+Please check scripts with `run_{STR/spred/L1}_{cifar10/cifar100}.sh` for the usage on CIFAR datasets. The experiments records can be found in this [online form](https://docs.google.com/spreadsheets/d/10SPZmKFzn7JT5V_6x04iFHzm-1j7zQMsP5B7Atdc6DQ/edit?usp=sharing).
 
-This repo can be also used to run experiments on Imagenet.
+This repo can be also used to run experiments on Imagenet. The raw experiment results and commands to run the experiments is found in this [online form](https://docs.google.com/spreadsheets/d/1bszgMm_8ZgOF0CCU3kjTG1kzdJdsNJWrNS6VoyMZhbk/edit?usp=sharing).
 
 ## (Legancy) previous implementation of CIFAR dataset.
 
