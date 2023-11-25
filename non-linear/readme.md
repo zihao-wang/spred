@@ -12,3 +12,6 @@ test method name includes
 - mlp
 - sparse_feature_net
 - sparse_feature_net_v2 (This is the f_l + f_n in the paper)
+
+
+The script `run_cancer.sh`` demonstrates the sample usage.
