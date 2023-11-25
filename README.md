@@ -4,6 +4,15 @@ This is the repository for the paper Spred: Solving L1 with SGD.
 
 The subtasks are contained into different folders
 
+## Environment
+
+The conda environment can be found in `enironment.yml`
+
+We note that there will be some compatibility issue to load the cancer datasets. An adhoc fix is to change the line 322 of `GEOparse.py` into line 323-324, as indicated in the following picture.
+
+![Alt text](image.png)
+
+
 ## Task1: Linear regression
 
 The first task is described in folder `linear`. Please check the `linear/readme.md`
