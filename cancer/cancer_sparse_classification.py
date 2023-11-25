@@ -10,18 +10,18 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import KFold, train_test_split
 from sklearn.svm import SVC
+from pyHSICLasso import HSICLasso
 
 from data import get_cancer_GDS
-from models import MLP, LinearRegression, SparseFeatureLinearRegression, SparseFeatureNet, SparseFeatureNetv2, SparseWeightNet
+from models import MLP, SparseFeatureLinearRegression, SparseFeatureNet, SparseFeatureNetv2, SparseWeightNet
 from routines import run_classification, run_sparse_feature_classification
 
 
 parser = argparse.ArgumentParser()
 
 parser.add_argument("--model_name", type=str, default='hsiclasso')
-parser.add_argument("--dataset_name", type=str, default="")
 parser.add_argument("--num_trials", type=int, default=20)
-parser.add_argument("--log_dir", type=str, default='log')
+parser.add_argument("--log_path", type=str, default='log/default.log')
 # hsic lasso arguments
 parser.add_argument("--num_feat", type=int, default=50)
 parser.add_argument("--B", type=int, default=20)
@@ -43,7 +43,6 @@ def _logistic_regression(X_train, y_train, X_test, y_test, **kwargs):
     return {'acc': acc}
 
 def _hsic_lasso(X_train, y_train, X_test, y_test, num_feat, B, **kwargs):
-    from pyHSICLasso import HSICLasso
     hsic_lasso = HSICLasso()
     hsic_lasso.input(X_train, y_train)
     hsic_lasso.classification(num_feat=num_feat, B=B)
@@ -108,6 +107,9 @@ def evaluate_model(X_train, y_train, X_test, y_test, model_name, **kwargs):
     elif model_name.lower() == 'mlp':
         """run a mlp"""
         metric = _some_net(MLP, X_train, y_train, X_test, y_test, **kwargs)
+    elif model_name.lower() == 'sparse_feature_net':
+        """run a joint trained feature selection and end to end network"""
+        metric = _sparse_feature_net(SparseFeatureNet, X_train, y_train, X_test, y_test, **kwargs)
     elif model_name.lower() == 'sparse_feature_net_v2':
         """run a joint trained feature selection and end to end network"""
         metric = _sparse_feature_net(SparseFeatureNetv2, X_train, y_train, X_test, y_test, **kwargs)
@@ -137,7 +139,8 @@ def multi_trials_model(X, y, model_name, num_trials=100, **kwargs):
 if __name__ == "__main__":
     args = parser.parse_args()
 
-    logging.basicConfig(filename=args.log_dir,
+    os.makedirs(os.path.dirname(args.log_path), exist_ok=True)
+    logging.basicConfig(filename=args.log_path,
                         format='%(asctime)s.%(msecs)03d %(levelname)s %(module)s - %(funcName)s: %(message)s',
                         datefmt='%Y-%m-%d %H:%M:%S',
                         filemode='wt',
@@ -148,7 +151,7 @@ if __name__ == "__main__":
     torch.manual_seed(111)
 
     for f in os.listdir('data'):
-        if f.endswith('soft.gz') and args.dataset_name in f:
+        if f.endswith('soft.gz'):
             filepath = os.path.join("data", f)
             X, y = get_cancer_GDS(filepath)
             perm = np.random.permutation(X.shape[0])

@@ -11,6 +11,7 @@ from routines import run_lasso, run_rs_regression
 from data import isotropic_predictor_data
 
 np.set_printoptions(precision=8, suppress=True)
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--num_samples', type=int, default=1000)
 parser.add_argument('--predictor_dim', type=int, default=100)
@@ -19,7 +20,7 @@ parser.add_argument('--batch_size', type=int, default=1000)
 parser.add_argument('--noisy_variance', type=float, default=0.1)
 parser.add_argument('--optname', type=str, default='SGD')
 parser.add_argument('--lr', type=float, default=1e-2)
-parser.add_argument('--epoch', type=int, default=10000)
+parser.add_argument('--epoch', type=int, default=1000)
 parser.add_argument('--device', type=str, default='cuda:0')
 parser.add_argument('--num_alpha', type=int, default=10)
 
@@ -29,8 +30,8 @@ def get_closest_alpha(alphas, a):
 
 if __name__ == "__main__":
     args = parser.parse_args()
-    output_folder = os.path.join("output/HighDimLinearRegression-v2",
-                                 f"{args.predictor_dim}_{args.respond_dim}")
+    output_folder = os.path.join(
+        "output/log", f"{args.predictor_dim}_{args.respond_dim}")
     os.makedirs(output_folder, exist_ok=True)
 
     (x, y), trans = isotropic_predictor_data(args.num_samples,
@@ -106,14 +107,11 @@ if __name__ == "__main__":
                                      lr=args.lr,
                                      device=args.device,
                                      loss_func='mse',
-                                     loss_less_than=target_loss,
-                                     zero_rate_greater_than=target_zero_rate,
-                                     zero_rate_ratios=[0.5, 0.75, 0.9, 0.99, 0.999, 1],
                                      eval_every_epoch=100)
 
         filename = os.path.join(
             output_folder,
-            f'{alpha}-rs_metrics_optname_{args.optname}_lr_{args.lr}')
+            f'rs_metrics-alpha={alpha}-optname={args.optname}-lr={args.lr}')
 
         with open(filename, 'wt') as f:
             for metric in rs_fetch['metric_list']:
